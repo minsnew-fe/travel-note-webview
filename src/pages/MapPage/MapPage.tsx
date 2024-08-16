@@ -23,9 +23,9 @@ const MapPage = () => {
   }, [window.kakao]);
 
   return (
-    <div>
+    <div className="h-full w-screen">
       <div>Map Page</div>
-      <div id="map" style={{ width: "500px", height: "500px" }} />
+      <div id="map" className="w-full h-full" />
     </div>
   );
 };
