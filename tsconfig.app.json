@@ -22,7 +22,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["kakao.maps.d.ts"]
+    "types": ["@types/kakaomaps", "@types/navermaps"]
   },
   "include": ["src"]
 }
