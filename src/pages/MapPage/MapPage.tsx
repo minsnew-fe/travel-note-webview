@@ -4,18 +4,20 @@ const MapPage = () => {
   const [kakaoMap, setKakaoMap] = useState<kakao.maps.Map>();
 
   const initializeMap = () => {
-    const container = document.getElementById("map");
+    kakao.maps.load(() => {
+      const container = document.getElementById("map");
 
-    console.log("AAAa", window?.kakao?.maps);
-    const options = {
-      center: new window.kakao.maps.LatLng(33.450701, 126.570667),
-      level: 3,
-    };
+      console.log("AAAa", window?.kakao?.maps);
+      const options = {
+        center: new window.kakao.maps.LatLng(33.450701, 126.570667),
+        level: 3,
+      };
 
-    if (container) {
-      const map = new window.kakao.maps.Map(container, options);
-      setKakaoMap(map);
-    }
+      if (container) {
+        const map = new window.kakao.maps.Map(container, options);
+        setKakaoMap(map);
+      }
+    });
   };
 
   const initializeNaverMap = () => {
@@ -29,10 +31,27 @@ const MapPage = () => {
     }
   };
 
+  const loadKakaoMap = () => {
+    const script = document.createElement("script");
+    script.src =
+      "//dapi.kakao.com/v2/maps/sdk.js?appkey=4423af2f500b7c83046402a32a7f65c9&autoload=false";
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+      initializeMap();
+    };
+
+    document.head.appendChild(script);
+  };
+
   useEffect(() => {
-    initializeMap();
-    initializeNaverMap();
-  }, [window.kakao]);
+    loadKakaoMap();
+  }, []);
+
+  // useEffect(() => {
+  //   initializeMap();
+  //   initializeNaverMap();
+  // }, [window.kakao]);
 
   return (
     <div className="h-full w-screen">
