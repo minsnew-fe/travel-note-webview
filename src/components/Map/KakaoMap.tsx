@@ -20,7 +20,6 @@ const KakaoMap = () => {
   };
 
   const loadScript = () => {
-    console.log("????");
     const script = document.createElement("script");
     script.src =
       "//dapi.kakao.com/v2/maps/sdk.js?appkey=4423af2f500b7c83046402a32a7f65c9&autoload=false";
